@@ -1,5 +1,12 @@
 @import url("./modules/node_modules/modern-normalize/modern-normalize.css");
 
+@font-face {
+    font-family: "open-sans";
+    src: url("./fonts/opensans-variablefont.woff2") format("woff2-variations");
+    font-weight: 300 800;
+    font-stretch: 75% 100%;
+}
+
 *,
 *::before,
 *::after {
@@ -19,4 +26,6 @@ img, picture, video, canvas, svg {
 p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
 }
+
+
 
