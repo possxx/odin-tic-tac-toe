@@ -8,3 +8,15 @@ const gameboard = (function () {
     return { board: [row1, row2, row3, column1, column2, column3] };
 })();
 
+function createPlayer(mark) {
+    
+    let marks = 0;
+    const getMarks = () => marks;
+    const giveMarks = () => marks++;
+
+    return { mark, getMarks, giveMarks };
+}
+
+const player1 = createPlayer("X");
+const player2 = createPlayer("O");
+
