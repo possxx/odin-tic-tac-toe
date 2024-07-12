@@ -137,12 +137,59 @@ body {
 }
 
 .tic-tac-toe * {
-    border: 1px solid var(--emerald-900);
     cursor: pointer;
     display: grid;
     place-items: center;
     font-size: 3rem;
     color: var(--emerald-900);
+}
+
+.row1.column1 {
+    border: 1px solid var(--emerald-900);
+}
+
+.row1.column2 {
+    border-top: 1px solid var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-900);
+    border-right: 1px solid var(--emerald-900);
+}
+
+.row1.column3 {
+    border-top: 1px solid var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-900);
+    border-right: 1px solid var(--emerald-900);
+}
+
+.row2.column1 {
+    border-left: 1px solid var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-900);
+    border-right: 1px solid var(--emerald-900);
+}
+
+.row2.column2 {
+    border-bottom: 1px solid var(--emerald-900);
+    border-right: 1px solid var(--emerald-900);
+}
+
+.row2.column3 {
+    border-right: 1px solid var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-900);
+}
+
+.row3.column1 {
+    border-left: 1px solid var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-900);
+    border-right: 1px solid var(--emerald-900);
+}
+
+.row3.column2 {
+    border-bottom: 1px solid var(--emerald-900);
+    border-right: 1px solid var(--emerald-900);
+}
+
+.row3.column3 {
+    border-right: 1px solid var(--emerald-900);
+    border-bottom: 1px solid var(--emerald-900);
 }
 
 .game-button {
