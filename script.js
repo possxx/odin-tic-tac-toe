@@ -62,11 +62,16 @@ const dom = (function() {
             dom.startGameButton.classList.toggle("display-none");
             dom.playerTurn.classList.toggle("display-none");
             dom.playerNames.classList.toggle("display-none");
+            gameboard.board.forEach(item => {
+                item.forEach(item => {
+                    item.innerText = "";
+                })
+            })
         })
     }
 
     return { playerNames, domPlayer1, playerTurn, domPlayer2, startGameButton,
-             newGameButton, board, playerNamesButton, updateNames, startGame,
+             newGameButton, board, playerNamesButton, updateNames, startGame, newGame,
            };
 })();
 
@@ -163,3 +168,4 @@ const game = (function () {
 
 dom.updateNames();
 dom.startGame();
+dom.newGame();
