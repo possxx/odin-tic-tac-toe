@@ -45,7 +45,7 @@ const dom = (function() {
         })
     }
 
-    const newGame = () => {
+    const startGame = () => {
         startGameButton.addEventListener("click", () => {
             startGameButton.classList.toggle("display-none");
             playerNames.classList.toggle("display-none");
@@ -55,8 +55,19 @@ const dom = (function() {
         })
     }
 
+    const newGame = () => {
+        newGameButton.addEventListener("click", () => {
+            player1.clearMarks();
+            player2.clearMarks();
+            dom.newGameButton.classList.toggle("display-none");
+            dom.startGameButton.classList.toggle("display-none");
+            dom.playerTurn.classList.toggle("display-none");
+            dom.playerNames.classList.toggle("display-none");
+        })
+    }
+
     return { playerNames, domPlayer1, playerTurn, playerWinner, domPlayer2, startGameButton,
-             newGameButton, board, playerNamesButton, updateNames, newGame,
+             newGameButton, board, playerNamesButton, updateNames, startGame,
            };
 })();
 
@@ -105,7 +116,7 @@ const game = (function () {
             gameboard.board[0][0].innerText + gameboard.board[1][1].innerText + gameboard.board[2][2].innerText == game.currentPlayerMark + game.currentPlayerMark + game.currentPlayerMark ||
             gameboard.board[0][2].innerText + gameboard.board[1][1].innerText + gameboard.board[2][0].innerText == game.currentPlayerMark + game.currentPlayerMark + game.currentPlayerMark
         ) {
-            return `${game.currentPlayer.name} wins!`;
+            return `Congratulations ${game.currentPlayer.name}! You win!`;
         } else if (player1.getMarks() + player2.getMarks() == 9) {
             return "It's a tie!";
         }
@@ -120,6 +131,9 @@ const game = (function () {
 
         dom.playerTurn.innerText = `It's your turn ${currentPlayer.name}`;
 
+        const controller = new AbortController();
+        const { signal } = controller;
+
         function populateBoard() {
             dom.board.forEach(item => {
                 item.addEventListener("click", () => {
@@ -132,11 +146,13 @@ const game = (function () {
                             dom.playerTurn.innerText = `It's your turn ${game.currentPlayer.name}`;
                         } else {
                             dom.playerTurn.innerText = game.gameWin();
+                            dom.newGameButton.classList.toggle("display-none");
+                            controller.abort();
                         }
                     } else {
                         dom.playerTurn.innerText = "Field is already occupied. Choose another one!";
                     }
-                })
+                }, { signal })
             })
         }
 
@@ -147,4 +163,4 @@ const game = (function () {
 })();
 
 dom.updateNames();
-dom.newGame();
+dom.startGame();
