@@ -14,7 +14,6 @@ const dom = (function() {
     const domPlayer1 = document.querySelector(`.player-names input[name="name1"]`);
     const domPlayer2 = document.querySelector(`.player-names input[name="name2"]`);
     const playerTurn = document.querySelector(".player-turn");
-    const playerWinner = document.querySelector(".player-winner");
     const startGameButton = document.querySelector(".start-game");
     const newGameButton = document.querySelector(".new-game");
     const row1Column1 = document.querySelector(".row1.column1");
@@ -66,7 +65,7 @@ const dom = (function() {
         })
     }
 
-    return { playerNames, domPlayer1, playerTurn, playerWinner, domPlayer2, startGameButton,
+    return { playerNames, domPlayer1, playerTurn, domPlayer2, startGameButton,
              newGameButton, board, playerNamesButton, updateNames, startGame,
            };
 })();
